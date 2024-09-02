@@ -1,0 +1,54 @@
+<?php
+
+$lang['home'] = 'Home';
+$lang['sign_in'] = 'Sign in';
+$lang['member'] = 'Member';
+$lang['member_id'] = 'Member id';
+$lang['member_id_or_email'] = 'Member id or Email';
+$lang['member_id_or_email_address'] = 'Member id or Email Address';
+$lang['password'] = 'Password';
+$lang['old_password'] = 'Old Password';
+$lang['old_password_again'] = 'Old Password Again';
+$lang['new_password'] = 'New Password';
+$lang['new_password_again'] = 'New Password Again';
+$lang['exceeded_rate_limit'] = 'You have exceeded the rate limit. Please try again later.';
+$lang['require_post_request'] = 'Require post request.';
+$lang['fill_blanks'] = 'Please fill empty blanks.';
+$lang['user_not_found'] = 'User not found!';
+$lang['member_not_found'] = 'Member not found!';
+$lang['wrong_password'] = 'Wrong password.';
+$lang['login_successful'] = 'Login Successful';
+$lang['logout'] = 'Logout';
+$lang['setting'] = 'Setting';
+$lang['settings'] = 'Settings';
+$lang['sumbit'] = 'Sumbit';
+$lang['cancel'] = 'Cancel';
+$lang['new_passwords_must_be_the_same'] = 'New passwords must be the same.';
+$lang['password_updated'] = 'Password updated!';
+$lang['password_not_updated'] = 'Password not updated!';
+$lang['old_password_not_valid'] = 'Oldpassword not valid';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+$lang['language'] = 'language';
+
+?>

@@ -1,0 +1,8 @@
+$cachedValue = $cache->get('page');
+
+if ($cachedValue) {
+    echo base64_decode($cachedValue);
+} else {
+    $cache->set('page', base64_encode($config['partial']), 600);
+	echo $config['partial'];
+}
