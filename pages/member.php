@@ -8,7 +8,7 @@ include __DIR__ . '/partial.php';
 
 $config['partialBody'] = '<title>'.$lang['home'].'</title>
 <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-  <h4 class="text-center">'.$lang['sign_in'].'</h4>
+  <h4 class="text-center">'.$lang['sign_in_or_register'].'</h4>
   
   <form class="pt-3">
 	<div class="form-group">
@@ -18,7 +18,7 @@ $config['partialBody'] = '<title>'.$lang['home'].'</title>
 	  <input type="password" class="form-control form-control-lg" id="password" placeholder="'.$lang['password'].'">
 	</div>
 	<div class="mt-3">
-	  <a class="btn btn-block w-100 btn-primary btn-lg font-weight-medium auth-form-btn" id="btnSignIn" href="javascript:void(0);">'.$lang['sign_in'].'</a>
+	  <a class="btn btn-block w-100 btn-primary btn-lg font-weight-medium auth-form-btn" id="btnSignIn" href="javascript:void(0);">'.$lang['sign_in_or_register'].'</a>
 	</div>
   </form>
 </div>';
@@ -32,7 +32,7 @@ $("#btnSignIn").click((e) => {
 		data: { 
 			user: $("#user").val(),
 			password: $("#password").val(),
-			action: "signIn"
+			action: "check"
 		},
 		success: function(res){
 			alert(res.message);
@@ -53,6 +53,9 @@ $config['partial'] .= '</div></div></div></div></div>';
 $config['partial'] .= $config['partialScriptDefault'].$config['partialScript'];
 $config['partial'] .= '</body></html>';
 
+echo $config['partial'];
+
+/*
 $cachedValue = $cache->get('pageLogin');
 
 if ($cachedValue) {
@@ -61,5 +64,5 @@ if ($cachedValue) {
     $cache->set('pageLogin', base64_encode($config['partial']), 600);
 	echo $config['partial'];
 }
-
+*/
 ?>

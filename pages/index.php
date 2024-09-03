@@ -1,7 +1,7 @@
 <?php
 
 if(empty($_SESSION['session'])){
-    include 'login.php';
+    include 'member.php';
     exit;
 }
 
@@ -9,7 +9,7 @@ include __DIR__ . '/partial.php';
 
 $config['partialBody'] = '<div class="col-md-12 grid-margin"><div class="d-flex justify-content-between align-items-center"><div><h4 class="font-weight-bold mb-0">RoyalUI Dashboard</h4></div></div></div>
 
-<div class="col-md-12 grid-margin">asdasd</div>';
+<div class="col-md-12 grid-margin">'.$member['mid'].'</div>';
 $config['partialScript'] = '';
 
 $config['partial'] .= $config['partialHeader'];
@@ -24,6 +24,8 @@ $config['partial'] .= '</div></div>';
 $config['partial'] .= $config['partialScriptDefault'].$config['partialScript'];
 $config['partial'] .= '</body></html>';
 
+echo $config['partial'];
+/*
 $cachedValue = $cache->get('pageDashboard');
 
 if ($cachedValue) {
@@ -32,5 +34,5 @@ if ($cachedValue) {
     $cache->set('pageDashboard', base64_encode($config['partial']), 600);
 	echo $config['partial'];
 }
-
+*/
 ?>

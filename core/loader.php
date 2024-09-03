@@ -79,7 +79,7 @@ if(!file_exists($userLangFile)){
 $member = array();
 if(isset($_SESSION['session']) && isset($_SESSION['mid'])){
 
-    $db->where("id", $_SESSION['mid']);
+    $db->where("mid", $_SESSION['mid']);
     $member = $db->getOne("members");
 
     $db->disconnect();

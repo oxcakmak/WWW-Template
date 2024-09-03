@@ -1,7 +1,7 @@
 <?php
 
 if(empty($_SESSION['session'])){
-    include 'login.php';
+    include 'member.php';
     exit;
 }
 

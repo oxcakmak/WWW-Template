@@ -75,11 +75,12 @@ if(isset($_SESSION['session'])){
 }else{
 
     /* Sign In */
-    if($_POST['action'] === "signIn"){
+    if($_POST['action'] === "check"){
 
         $user = $helper->Strings->sanitizeOutput($_POST['user']);
         $password = $helper->Strings->sanitizeOutput($_POST['password']);
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $mid = 0;
 
         if(!$user || !$password){
             echo json_encode(array(
@@ -98,23 +99,53 @@ if(isset($_SESSION['session'])){
         $account = $db->getOne("members");
 
         if(!$account){
-            echo json_encode(array(
-                "message" => $lang['member_not_found'],
-                "status" => false,
-            ));
-            exit;
+
+            $mid = $helper->Generators->generateSimpleId();
+
+            $data = [
+                'avatar' => $config['assets'].'images/avatar.jpg',
+                'mid' => $mid,
+                'email' => $user,
+                'emailKey' => $helper->Generators->generateRandomString(30),
+                'password' => $hashedPassword,
+                'createdDateTime' => date("Y/m/d-H:i:s"),
+                'createdAddress' => $helper->Gets->getCurrentIpAddress(),
+                'loggedDateTime' => date("Y/m/d-H:i:s"),
+                'loggedAddress' => $helper->Gets->getCurrentIpAddress(),
+            ];
+
+            $addMember = $db->insert("members", $data);
+            if($addMember){
+                echo json_encode(array(
+                    "message" => $lang['registiration_successful'],
+                    "status" => true,
+                ));
+            }
+
+
+        }else{
+
+            $mid = $account['mid'];
+
+            if(!password_verify($password, $account['password'])){
+                echo json_encode(array(
+                    "message" => $lang['wrong_password'],
+                    "status" => false,
+                ));
+                exit;
+            }
+
+            $data = [
+                'loggedDateTime' => date("Y/m/d-H:i:s"),
+                'loggedAddress' => $helper->Gets->getCurrentIpAddress(),
+            ];
+            $db->where("mid", $mid);
+            $db->update("members", $data);
         }
 
-        if(!password_verify($password, $account['password'])){
-            echo json_encode(array(
-                "message" => $lang['wrong_password'],
-                "status" => false,
-            ));
-            exit;
-        }
 
         $_SESSION['session'] = true;
-        $_SESSION['mid'] = $account['id'];
+        $_SESSION['mid'] = $mid;
         echo json_encode(array(
             "message" => $lang['login_successful'],
             "status" => false,
